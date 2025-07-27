@@ -1,0 +1,183 @@
+@FormBuilderAPI_HostAddress = http://localhost:5157
+
+### Get all forms
+GET {{FormBuilderAPI_HostAddress}}/api/forms
+Accept: application/json
+
+###
+
+### Create a new form (Valid Request)
+
+POST {{FormBuilderAPI_HostAddress}}/api/forms
+Content-Type: application/json
+
+{
+  "name": "Parisher Demographics",
+  "tenantId": 1,
+  "fields": [
+    {
+      "alignment": "center",
+      "columnsPerRow": 2,
+      "columns": [
+        {
+          "type": "text",
+          "label": "First Name",
+          "name": "firstname",
+          "placeholder": "Enter your first name",
+          "required": true,
+          "options": [],
+          "formSection": {
+            "id": 1,
+            "name": "Personal Information",
+            "form": {
+              "id": 1,
+              "name": "Parisher Demographics",
+              "tenant": {
+                "id": 1,
+                "name": "Vineeth"
+              },
+              "fields": [] 
+            }
+          }
+        },
+        {
+          "type": "text",
+          "label": "Last Name",
+          "name": "lastname",
+          "placeholder": "Enter your last name",
+          "required": true,
+          "options": [],
+          "formSection": {
+            "id": 1,
+            "name": "Personal Information",
+            "form": {
+              "id": 1,
+              "name": "Parisher Demographics",
+              "tenant": {
+                "id": 1,
+                "name": "Vineeth"
+              },
+              "fields": []
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
+###
+###
+
+### Create a new form (Valid Request)
+POST {{FormBuilderAPI_HostAddress}}/api/forms
+Content-Type: application/json
+
+{
+  "name": "Parisher Demographics 1",
+  "tenantId": 1,
+  "fields": [
+    {
+      "alignment": "center",
+      "columnsPerRow": 2,
+      "columns": [
+        {
+          "type": "text",
+          "label": "First Name",
+          "name": "firstname",
+          "placeholder": "Enter your first name",
+          "required": true,
+          "options": [],
+          "formSection": {
+            "id": 1,
+            "name": "Personal Information",
+            "form": {
+              "id": 1,
+              "name": "Parisher Demographics 1",
+              "tenant": {
+                "id": 1,
+                "name": "Vineeth"
+              },
+              "fields": [] 
+            }
+          }
+        },
+        {
+          "type": "text",
+          "label": "Last Name",
+          "name": "lastname",
+          "placeholder": "Enter your last name",
+          "required": true,
+          "options": [],
+          "formSection": {
+            "id": 1,
+            "name": "Personal Information",
+            "form": {
+              "id": 1,
+              "name": "Parisher Demographics 1",
+              "tenant": {
+                "id": 1,
+                "name": "Vineeth"
+              },
+              "fields": []
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
+###
+
+### Create a new form (Invalid Request - Missing TenantId)
+POST {{FormBuilderAPI_HostAddress}}/api/forms
+Content-Type: application/json
+
+{
+  "name": "Invalid Form",
+  "fields": []
+}
+
+###
+
+### Create a new form (Invalid Request - Empty Sections)
+POST {{FormBuilderAPI_HostAddress}}/api/forms
+Content-Type: application/json
+
+{
+  "name": "Invalid Form",
+  "tenantId": 1,
+  "fields": []
+}
+
+###
+
+### Get a specific form by ID (Replace {id} with a valid form ID)
+GET {{FormBuilderAPI_HostAddress}}/api/forms/1
+Accept: application/json
+
+###
+
+### Submit a form response (Replace {formId} with a valid ID)
+POST {{FormBuilderAPI_HostAddress}}/api/formsubmissions
+Content-Type: application/json
+
+{
+  "formId": 1,
+  "data": "{ \"firstname\": \"John\", \"lastname\": \"Doe\" }"
+}
+
+###
+
+### Get all form submissions
+GET {{FormBuilderAPI_HostAddress}}/api/formsubmissions
+Accept: application/json
+
+###
+
+### Test endpoint (Basic health check)
+GET {{FormBuilderAPI_HostAddress}}/api/formsubmissions/test
+Accept: application/json
+
+###
